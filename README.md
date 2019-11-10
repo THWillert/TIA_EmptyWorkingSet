@@ -16,8 +16,7 @@ Wenn ein Fall davon zutrifft, führt das Programm bei dem entsprechenden Prozess
 
 ### Voraussetzungen
 
-Keine.
-
+:warning: Wenn der Rechner nicht den Hardware-Vorraussetzungen entspricht (16 GB RAM), kann dieses Tool die Speicher-Probleme durch das TIA-Portal auch nicht verhindern, sondern nur etwas hinauszögern.
 
 ### Installation (Windows)
 
