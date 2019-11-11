@@ -6,7 +6,7 @@ Die Speicherverwaltung des TIA-Portals von Siemens ist seit Jahren nicht die bes
 Dieses kleine Programm schafft hier etwas Abhilfe.
 
 
-Dieses kleine Programm prüft alle 10 Sekunden ob der Speicher der Prozesse:
+Dieses kleine Programm prüft regelmäßig ob der Speicher der Prozesse:
 ```
 Siemens.Automation.Portal.exe > 600 MB
 Siemens.Automation.ObjectFrame.FileStorage.Server.exe > 400 MB
