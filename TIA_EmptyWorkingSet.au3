@@ -7,24 +7,24 @@
 If _Singleton(@ScriptName) = 0 Then Exit
 
 While Sleep(1000 * 10)
-	$aProc = _ProcessListProperties("Siemens.Automation.Portal.exe")
+    $aProc = _ProcessListProperties("Siemens.Automation.Portal.exe")
 
-	If Not @error And $aProc[0][0] > 0 Then
+    If Not @error And $aProc[0][0] > 0 Then
 
-		For $i = 1 To $aProc[0][0]
-			; 7 = Memory / 6 = CPU / 1 = PID
-			If $aProc[$i][7] >= 600000000 And $aProc[$i][6] < 10 Then _WinAPI_EmptyWorkingSet($aProc[$i][1])
-		Next
+        For $i = 1 To $aProc[0][0]
+            ; 7 = Memory / 6 = CPU / 1 = PID
+            If $aProc[$i][7] >= 600000000 And $aProc[$i][6] < 10 Then _WinAPI_EmptyWorkingSet($aProc[$i][1])
+        Next
 
-	EndIf
+    EndIf
 
-	$PID = ProcessExists("Siemens.Automation.ObjectFrame.FileStorage.Server.exe")
-	If $PID Then
-		$aInfo = _WinAPI_GetProcessMemoryInfo($PID)
-		If $aInfo[2] >= 400000000 Then _WinAPI_EmptyWorkingSet($PID)
-	EndIf
+    $PID = ProcessExists("Siemens.Automation.ObjectFrame.FileStorage.Server.exe")
+    If $PID Then
+        $aInfo = _WinAPI_GetProcessMemoryInfo($PID)
+        If $aInfo[2] >= 400000000 Then _WinAPI_EmptyWorkingSet($PID)
+    EndIf
 
-	_WinAPI_EmptyWorkingSet()
+    _WinAPI_EmptyWorkingSet()
 WEnd
 
 ;===============================================================================
@@ -117,7 +117,7 @@ Func _ProcessListProperties($Process = "", $sComputer = ".")
                 $n += 1
             Next
         Else
-            SetError(2); Error getting process collection from WMI
+            SetError(2) ; Error getting process collection from WMI
         EndIf
         ; release the collection object
         $colProcs = 0
@@ -125,7 +125,7 @@ Func _ProcessListProperties($Process = "", $sComputer = ".")
         ; Get collection of all processes from Win32_PerfFormattedData_PerfProc_Process
         ; Have to use an SWbemRefresher to pull the collection, or all Perf data will be zeros
         Local $oRefresher = ObjCreate("WbemScripting.SWbemRefresher")
-        $colProcs = $oRefresher.AddEnum($oWMI, "Win32_PerfFormattedData_PerfProc_Process" ).objectSet
+        $colProcs = $oRefresher.AddEnum($oWMI, "Win32_PerfFormattedData_PerfProc_Process").objectSet
         $oRefresher.Refresh
 
         ; Time delay before calling refresher
@@ -149,9 +149,9 @@ Func _ProcessListProperties($Process = "", $sComputer = ".")
             Next
         Next
     Else
-        SetError(1); Error connecting to WMI
+        SetError(1) ; Error connecting to WMI
     EndIf
 
     ; Return array
     Return $avProcs
-EndFunc  ;==>_ProcessListProperties
+EndFunc   ;==>_ProcessListProperties
