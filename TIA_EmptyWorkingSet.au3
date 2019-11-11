@@ -4,29 +4,28 @@
 #include <WinAPIProc.au3>
 #include <Misc.au3>
 
-If _Singleton ( @ScriptName ) = 0 Then Exit
+If _Singleton(@ScriptName) = 0 Then Exit
 
 While Sleep(1000 * 10)
-   $aProc = _ProcessListProperties(  "Siemens.Automation.Portal.exe" )
+	$aProc = _ProcessListProperties("Siemens.Automation.Portal.exe")
 
-   If Not @error And $aProc[0][0] > 0 Then
+	If Not @error And $aProc[0][0] > 0 Then
 
-	  For $i = 1 To $aProc[0][0]
-		 ; 7 = Memory / 6 = CPU / 1 = PID
-		 IF $aProc[$i][7] >= 600000000 And $aProc[$i][6] < 10 Then _WinAPI_EmptyWorkingSet ( $aProc[$i][1] )
-	  Next
+		For $i = 1 To $aProc[0][0]
+			; 7 = Memory / 6 = CPU / 1 = PID
+			If $aProc[$i][7] >= 600000000 And $aProc[$i][6] < 10 Then _WinAPI_EmptyWorkingSet($aProc[$i][1])
+		Next
 
-   EndIf
+	EndIf
 
-   $PID = ProcessExists( "Siemens.Automation.ObjectFrame.FileStorage.Server.exe" )
-   IF $PID Then
-	  $aInfo = _WinAPI_GetProcessMemoryInfo( $PID)
-	  IF $aInfo[2] >= 400000000  Then _WinAPI_EmptyWorkingSet ( $PID )
-	  EndIf
+	$PID = ProcessExists("Siemens.Automation.ObjectFrame.FileStorage.Server.exe")
+	If $PID Then
+		$aInfo = _WinAPI_GetProcessMemoryInfo($PID)
+		If $aInfo[2] >= 400000000 Then _WinAPI_EmptyWorkingSet($PID)
+	EndIf
 
-   _WinAPI_EmptyWorkingSet()
+	_WinAPI_EmptyWorkingSet()
 WEnd
-
 
 ;===============================================================================
 ; Function Name:    _ProcessListProperties()
