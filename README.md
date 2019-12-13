@@ -14,11 +14,11 @@ Siemens.Automation.ObjectFrame.FileStorage.Server.exe > 400 MB
 
 Wenn ein Fall davon zutrifft, führt das Programm bei dem entsprechenden Prozess ein [EmptyWorkingSet](https://docs.microsoft.com/en-us/windows/win32/api/psapi/nf-psapi-emptyworkingset) durch.
 
-### Voraussetzungen
+## Voraussetzungen
 
 :warning: Wenn der Rechner nicht den Hardware-Vorraussetzungen entspricht (16 GB RAM), kann dieses Tool die Speicher-Probleme durch das TIA-Portal auch nicht verhindern, sondern nur etwas hinauszögern.
 
-### Installation (Windows)
+## Installation (Windows)
 
 Einfach die EXE starten. 
 
