@@ -24,7 +24,7 @@ Einfach die EXE starten.
 
 
 ## Author
-Thorsten Willert [Homepage](http://www.thorsten-willert.de/)
+Thorsten Willert [Homepage](https://www.thorsten-willert.de/software/sps-tools/tia-emptyworkingset)
 
 PsaltyDS at http://www.autoitscript.com/forum
 
